@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbVisitorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCounty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Province_Id" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Specialty_Id" Type="smallint" />
+          <Property Name="County_Id" Type="smallint" />
+          <Property Name="Doctor_Id" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblDoctorPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Doctor_Id" Type="int" />
+          <Property Name="Patient_Id" Type="int" />
+          <Property Name="MedicalRecord" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date" Type="nvarchar" MaxLength="10" />
+          <Property Name="Time" Type="nvarchar" MaxLength="8" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblLicense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AppLicense" Type="nvarchar" MaxLength="40" />
+          <Property Name="AppVersion" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="tblPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patient_Id" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblPostType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblProvince">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSecurityAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="19" />
+          <Property Name="Counter" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tblSecurityQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SecurityQuestion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblSpecialty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSundry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RegisteredAdminPassword" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_PostType_Id" Type="tinyint" />
+          <Property Name="User_SecurityQuestion_Id" Type="tinyint" />
+          <Property Name="UserFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="60" />
+          <Property Name="UserMobileNumber" Type="nvarchar" MaxLength="11" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserAnswer" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserRegistrationDate" Type="nvarchar" MaxLength="19" />
+          <Property Name="UserImage" Type="nvarchar(max)" />
+          <Property Name="UserDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblVisitDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Doctor_Id" Type="int" />
+          <Property Name="Date" Type="nvarchar" MaxLength="10" />
+          <Property Name="Time" Type="nvarchar" MaxLength="8" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbVisitor.dbo.viewDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SpecialtyName" />
+            <PropertyRef Name="CountyName" />
+            <PropertyRef Name="Province_Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Specialty_Id" Type="smallint" />
+          <Property Name="County_Id" Type="smallint" />
+          <Property Name="Doctor_Id" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="SpecialtyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province_Id" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbVisitor.dbo.viewDoctorPatient' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewDoctorPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Doctor_Id" Type="int" />
+          <Property Name="Patient_Id" Type="int" />
+          <Property Name="MedicalRecord" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date" Type="nvarchar" MaxLength="10" />
+          <Property Name="Time" Type="nvarchar" MaxLength="8" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="DoctorCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="PatientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientFamily" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="spAutoDoctorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spAutoPatientId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spSelectViewDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spSelectViewDoctorPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="dbVisitorModelStoreContainer">
+          <EntitySet Name="tblCounty" EntityType="Self.tblCounty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctor" EntityType="Self.tblDoctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctorPatient" EntityType="Self.tblDoctorPatient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLicense" EntityType="Self.tblLicense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPatient" EntityType="Self.tblPatient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPostType" EntityType="Self.tblPostType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProvince" EntityType="Self.tblProvince" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSecurityAccess" EntityType="Self.tblSecurityAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSecurityQuestion" EntityType="Self.tblSecurityQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpecialty" EntityType="Self.tblSpecialty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSundry" EntityType="Self.tblSundry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVisitDoctor" EntityType="Self.tblVisitDoctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="viewDoctor" EntityType="Self.viewDoctor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewDoctor].[Id] AS [Id], 
+    [viewDoctor].[Specialty_Id] AS [Specialty_Id], 
+    [viewDoctor].[County_Id] AS [County_Id], 
+    [viewDoctor].[Doctor_Id] AS [Doctor_Id], 
+    [viewDoctor].[Name] AS [Name], 
+    [viewDoctor].[Family] AS [Family], 
+    [viewDoctor].[Sex] AS [Sex], 
+    [viewDoctor].[Address] AS [Address], 
+    [viewDoctor].[PhoneNumber] AS [PhoneNumber], 
+    [viewDoctor].[MobileNumber] AS [MobileNumber], 
+    [viewDoctor].[Description] AS [Description], 
+    [viewDoctor].[SpecialtyName] AS [SpecialtyName], 
+    [viewDoctor].[CountyName] AS [CountyName], 
+    [viewDoctor].[ProvinceName] AS [ProvinceName], 
+    [viewDoctor].[Province_Id] AS [Province_Id]
+    FROM [dbo].[viewDoctor] AS [viewDoctor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewDoctorPatient" EntityType="Self.viewDoctorPatient" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewDoctorPatient].[Id] AS [Id], 
+    [viewDoctorPatient].[Doctor_Id] AS [Doctor_Id], 
+    [viewDoctorPatient].[Patient_Id] AS [Patient_Id], 
+    [viewDoctorPatient].[MedicalRecord] AS [MedicalRecord], 
+    [viewDoctorPatient].[Date] AS [Date], 
+    [viewDoctorPatient].[Time] AS [Time], 
+    [viewDoctorPatient].[Description] AS [Description], 
+    [viewDoctorPatient].[DoctorCode] AS [DoctorCode], 
+    [viewDoctorPatient].[Name] AS [Name], 
+    [viewDoctorPatient].[Family] AS [Family], 
+    [viewDoctorPatient].[PatientCode] AS [PatientCode], 
+    [viewDoctorPatient].[PatientName] AS [PatientName], 
+    [viewDoctorPatient].[PatientFamily] AS [PatientFamily]
+    FROM [dbo].[viewDoctorPatient] AS [viewDoctorPatient]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbVisitorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCounty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Province_Id" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Specialty_Id" Type="Int16" />
+          <Property Name="County_Id" Type="Int16" />
+          <Property Name="Doctor_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblDoctorPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Doctor_Id" Type="Int32" />
+          <Property Name="Patient_Id" Type="Int32" />
+          <Property Name="MedicalRecord" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblLicense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AppLicense" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="AppVersion" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patient_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPostType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblProvince">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSecurityAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="String" MaxLength="19" FixedLength="false" Unicode="true" />
+          <Property Name="Counter" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSecurityQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SecurityQuestion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSpecialty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSundry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RegisteredAdminPassword" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_PostType_Id" Type="Byte" />
+          <Property Name="User_SecurityQuestion_Id" Type="Byte" />
+          <Property Name="UserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="UserMobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserRegistrationDate" Type="String" MaxLength="19" FixedLength="false" Unicode="true" />
+          <Property Name="UserImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblVisitDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Doctor_Id" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="viewDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SpecialtyName" />
+            <PropertyRef Name="CountyName" />
+            <PropertyRef Name="Province_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Specialty_Id" Type="Int16" />
+          <Property Name="County_Id" Type="Int16" />
+          <Property Name="Doctor_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialtyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProvinceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province_Id" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="viewDoctorPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Doctor_Id" Type="Int32" />
+          <Property Name="Patient_Id" Type="Int32" />
+          <Property Name="MedicalRecord" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientFamily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="dbVisitorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCounty" EntityType="Self.tblCounty" />
+          <EntitySet Name="tblDoctor" EntityType="Self.tblDoctor" />
+          <EntitySet Name="tblDoctorPatient" EntityType="Self.tblDoctorPatient" />
+          <EntitySet Name="tblLicense" EntityType="Self.tblLicense" />
+          <EntitySet Name="tblPatient" EntityType="Self.tblPatient" />
+          <EntitySet Name="tblPostType" EntityType="Self.tblPostType" />
+          <EntitySet Name="tblProvince" EntityType="Self.tblProvince" />
+          <EntitySet Name="tblSecurityAccess" EntityType="Self.tblSecurityAccess" />
+          <EntitySet Name="tblSecurityQuestion" EntityType="Self.tblSecurityQuestion" />
+          <EntitySet Name="tblSpecialty" EntityType="Self.tblSpecialty" />
+          <EntitySet Name="tblSundry" EntityType="Self.tblSundry" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="tblVisitDoctor" EntityType="Self.tblVisitDoctor" />
+          <EntitySet Name="viewDoctor" EntityType="Self.viewDoctor" />
+          <EntitySet Name="viewDoctorPatient" EntityType="Self.viewDoctorPatient" />
+          <FunctionImport Name="spAutoDoctorId" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="spAutoPatientId" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="spSelectViewDoctor" ReturnType="Collection(dbVisitorModel.spSelectViewDoctor_Result)" />
+          <FunctionImport Name="spSelectViewDoctorPatient" ReturnType="Collection(dbVisitorModel.spSelectViewDoctorPatient_Result)" />
+        </EntityContainer>
+        <ComplexType Name="spSelectViewDoctor_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int16" Name="Specialty_Id" Nullable="true" />
+          <Property Type="Int16" Name="County_Id" Nullable="true" />
+          <Property Type="String" Name="Doctor_Id" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Family" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Sex" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SpecialtyName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CountyName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ProvinceName" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="Province_Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spSelectViewDoctorPatient_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Doctor_Id" Nullable="true" />
+          <Property Type="Int32" Name="Patient_Id" Nullable="true" />
+          <Property Type="String" Name="MedicalRecord" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Time" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="DoctorCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Family" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PatientCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PatientName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PatientFamily" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbVisitorModelStoreContainer" CdmEntityContainer="dbVisitorEntities">
+          <EntitySetMapping Name="tblCounty">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblCounty">
+              <MappingFragment StoreEntitySet="tblCounty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Province_Id" ColumnName="Province_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctor">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblDoctor">
+              <MappingFragment StoreEntitySet="tblDoctor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Specialty_Id" ColumnName="Specialty_Id" />
+                <ScalarProperty Name="County_Id" ColumnName="County_Id" />
+                <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctorPatient">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblDoctorPatient">
+              <MappingFragment StoreEntitySet="tblDoctorPatient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+                <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+                <ScalarProperty Name="MedicalRecord" ColumnName="MedicalRecord" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLicense">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblLicense">
+              <MappingFragment StoreEntitySet="tblLicense">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppLicense" ColumnName="AppLicense" />
+                <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPatient">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblPatient">
+              <MappingFragment StoreEntitySet="tblPatient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPostType">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblPostType">
+              <MappingFragment StoreEntitySet="tblPostType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PostType" ColumnName="PostType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProvince">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblProvince">
+              <MappingFragment StoreEntitySet="tblProvince">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSecurityAccess">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblSecurityAccess">
+              <MappingFragment StoreEntitySet="tblSecurityAccess">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSecurityQuestion">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblSecurityQuestion">
+              <MappingFragment StoreEntitySet="tblSecurityQuestion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpecialty">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblSpecialty">
+              <MappingFragment StoreEntitySet="tblSpecialty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSundry">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblSundry">
+              <MappingFragment StoreEntitySet="tblSundry">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RegisteredAdminPassword" ColumnName="RegisteredAdminPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User_PostType_Id" ColumnName="User_PostType_Id" />
+                <ScalarProperty Name="User_SecurityQuestion_Id" ColumnName="User_SecurityQuestion_Id" />
+                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserMobileNumber" ColumnName="UserMobileNumber" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserAnswer" ColumnName="UserAnswer" />
+                <ScalarProperty Name="UserRegistrationDate" ColumnName="UserRegistrationDate" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="UserDescription" ColumnName="UserDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVisitDoctor">
+            <EntityTypeMapping TypeName="dbVisitorModel.tblVisitDoctor">
+              <MappingFragment StoreEntitySet="tblVisitDoctor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewDoctor">
+            <EntityTypeMapping TypeName="dbVisitorModel.viewDoctor">
+              <MappingFragment StoreEntitySet="viewDoctor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Specialty_Id" ColumnName="Specialty_Id" />
+                <ScalarProperty Name="County_Id" ColumnName="County_Id" />
+                <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SpecialtyName" ColumnName="SpecialtyName" />
+                <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="Province_Id" ColumnName="Province_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewDoctorPatient">
+            <EntityTypeMapping TypeName="dbVisitorModel.viewDoctorPatient">
+              <MappingFragment StoreEntitySet="viewDoctorPatient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+                <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+                <ScalarProperty Name="MedicalRecord" ColumnName="MedicalRecord" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DoctorCode" ColumnName="DoctorCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="PatientCode" ColumnName="PatientCode" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAutoDoctorId" FunctionName="dbVisitorModel.Store.spAutoDoctorId" />
+          <FunctionImportMapping FunctionImportName="spAutoPatientId" FunctionName="dbVisitorModel.Store.spAutoPatientId" />
+          <FunctionImportMapping FunctionImportName="spSelectViewDoctor" FunctionName="dbVisitorModel.Store.spSelectViewDoctor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbVisitorModel.spSelectViewDoctor_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Specialty_Id" ColumnName="Specialty_Id" />
+                <ScalarProperty Name="County_Id" ColumnName="County_Id" />
+                <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SpecialtyName" ColumnName="SpecialtyName" />
+                <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="Province_Id" ColumnName="Province_Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectViewDoctorPatient" FunctionName="dbVisitorModel.Store.spSelectViewDoctorPatient">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbVisitorModel.spSelectViewDoctorPatient_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+                <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+                <ScalarProperty Name="MedicalRecord" ColumnName="MedicalRecord" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DoctorCode" ColumnName="DoctorCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="PatientCode" ColumnName="PatientCode" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

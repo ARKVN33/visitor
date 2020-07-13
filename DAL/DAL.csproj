@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{50E3FBEC-5927-41A5-9B28-DB05CEB7D4D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net">
+      <HintPath>..\Visitor\bin\Debug\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PersianDateTime, Version=1.1.5082.36395, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PersianDateTime.1.1.5082.36395\lib\net40\PersianDateTime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\DDoctor.cs" />
+    <Compile Include="Class\DDoctorPatient.cs" />
+    <Compile Include="Class\DLicense.cs" />
+    <Compile Include="Class\DPatient.cs" />
+    <Compile Include="Class\DSpecialty.cs" />
+    <Compile Include="Class\DUser.cs" />
+    <Compile Include="Class\DUserLogin.cs" />
+    <Compile Include="Class\DVisitDoctor.cs" />
+    <Compile Include="Class\Globals.cs" />
+    <Compile Include="Class\VisitorDbChanges.cs" />
+    <Compile Include="Class\VisitorDbConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="spSelectViewDoctorPatient_Result.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spSelectViewDoctor_Result.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCounty.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDoctor.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDoctorPatient.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLicense.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPatient.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPostType.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProvince.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSecurityAccess.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSecurityQuestion.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSpecialty.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSundry.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblVisitDoctor.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewDoctor.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewDoctorPatient.cs">
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisitorModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VisitorModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisitorModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VisitorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisitorModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VisitorModel.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="VisitorModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VisitorModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="VisitorModel.edmx.diagram">
+      <DependentUpon>VisitorModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VisitorModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VisitorModel.edmx</DependentUpon>
+      <LastGenOutput>VisitorModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="VisitorModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VisitorModel.edmx</DependentUpon>
+      <LastGenOutput>VisitorModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

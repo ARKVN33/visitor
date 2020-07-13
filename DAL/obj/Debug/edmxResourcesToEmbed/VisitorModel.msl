@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbVisitorModelStoreContainer" CdmEntityContainer="dbVisitorEntities">
+    <EntitySetMapping Name="tblCounty">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblCounty">
+        <MappingFragment StoreEntitySet="tblCounty">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Province_Id" ColumnName="Province_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDoctor">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblDoctor">
+        <MappingFragment StoreEntitySet="tblDoctor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Specialty_Id" ColumnName="Specialty_Id" />
+          <ScalarProperty Name="County_Id" ColumnName="County_Id" />
+          <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDoctorPatient">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblDoctorPatient">
+        <MappingFragment StoreEntitySet="tblDoctorPatient">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+          <ScalarProperty Name="MedicalRecord" ColumnName="MedicalRecord" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLicense">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblLicense">
+        <MappingFragment StoreEntitySet="tblLicense">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AppLicense" ColumnName="AppLicense" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPatient">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblPatient">
+        <MappingFragment StoreEntitySet="tblPatient">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPostType">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblPostType">
+        <MappingFragment StoreEntitySet="tblPostType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PostType" ColumnName="PostType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProvince">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblProvince">
+        <MappingFragment StoreEntitySet="tblProvince">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSecurityAccess">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblSecurityAccess">
+        <MappingFragment StoreEntitySet="tblSecurityAccess">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Counter" ColumnName="Counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSecurityQuestion">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblSecurityQuestion">
+        <MappingFragment StoreEntitySet="tblSecurityQuestion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSpecialty">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblSpecialty">
+        <MappingFragment StoreEntitySet="tblSpecialty">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSundry">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblSundry">
+        <MappingFragment StoreEntitySet="tblSundry">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RegisteredAdminPassword" ColumnName="RegisteredAdminPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUser">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="User_PostType_Id" ColumnName="User_PostType_Id" />
+          <ScalarProperty Name="User_SecurityQuestion_Id" ColumnName="User_SecurityQuestion_Id" />
+          <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+          <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserMobileNumber" ColumnName="UserMobileNumber" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserAnswer" ColumnName="UserAnswer" />
+          <ScalarProperty Name="UserRegistrationDate" ColumnName="UserRegistrationDate" />
+          <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+          <ScalarProperty Name="UserDescription" ColumnName="UserDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVisitDoctor">
+      <EntityTypeMapping TypeName="dbVisitorModel.tblVisitDoctor">
+        <MappingFragment StoreEntitySet="tblVisitDoctor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewDoctor">
+      <EntityTypeMapping TypeName="dbVisitorModel.viewDoctor">
+        <MappingFragment StoreEntitySet="viewDoctor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Specialty_Id" ColumnName="Specialty_Id" />
+          <ScalarProperty Name="County_Id" ColumnName="County_Id" />
+          <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SpecialtyName" ColumnName="SpecialtyName" />
+          <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="Province_Id" ColumnName="Province_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewDoctorPatient">
+      <EntityTypeMapping TypeName="dbVisitorModel.viewDoctorPatient">
+        <MappingFragment StoreEntitySet="viewDoctorPatient">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+          <ScalarProperty Name="MedicalRecord" ColumnName="MedicalRecord" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DoctorCode" ColumnName="DoctorCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="PatientCode" ColumnName="PatientCode" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spAutoDoctorId" FunctionName="dbVisitorModel.Store.spAutoDoctorId" />
+    <FunctionImportMapping FunctionImportName="spAutoPatientId" FunctionName="dbVisitorModel.Store.spAutoPatientId" />
+    <FunctionImportMapping FunctionImportName="spSelectViewDoctor" FunctionName="dbVisitorModel.Store.spSelectViewDoctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbVisitorModel.spSelectViewDoctor_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Specialty_Id" ColumnName="Specialty_Id" />
+          <ScalarProperty Name="County_Id" ColumnName="County_Id" />
+          <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SpecialtyName" ColumnName="SpecialtyName" />
+          <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="Province_Id" ColumnName="Province_Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSelectViewDoctorPatient" FunctionName="dbVisitorModel.Store.spSelectViewDoctorPatient">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbVisitorModel.spSelectViewDoctorPatient_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+          <ScalarProperty Name="MedicalRecord" ColumnName="MedicalRecord" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DoctorCode" ColumnName="DoctorCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="PatientCode" ColumnName="PatientCode" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

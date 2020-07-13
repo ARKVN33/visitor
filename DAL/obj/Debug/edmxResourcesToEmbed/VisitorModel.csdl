@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbVisitorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblCounty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Province_Id" Type="Int16" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDoctor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Specialty_Id" Type="Int16" />
+    <Property Name="County_Id" Type="Int16" />
+    <Property Name="Doctor_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblDoctorPatient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Doctor_Id" Type="Int32" />
+    <Property Name="Patient_Id" Type="Int32" />
+    <Property Name="MedicalRecord" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblLicense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AppLicense" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="AppVersion" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblPatient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblPostType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblProvince">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSecurityAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="String" MaxLength="19" FixedLength="false" Unicode="true" />
+    <Property Name="Counter" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSecurityQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SecurityQuestion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSpecialty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSundry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="RegisteredAdminPassword" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_PostType_Id" Type="Byte" />
+    <Property Name="User_SecurityQuestion_Id" Type="Byte" />
+    <Property Name="UserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserPassword" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="UserMobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="UserEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UserAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserRegistrationDate" Type="String" MaxLength="19" FixedLength="false" Unicode="true" />
+    <Property Name="UserImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblVisitDoctor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Doctor_Id" Type="Int32" />
+    <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="viewDoctor">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="SpecialtyName" />
+      <PropertyRef Name="CountyName" />
+      <PropertyRef Name="Province_Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Specialty_Id" Type="Int16" />
+    <Property Name="County_Id" Type="Int16" />
+    <Property Name="Doctor_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialtyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProvinceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Province_Id" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewDoctorPatient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Doctor_Id" Type="Int32" />
+    <Property Name="Patient_Id" Type="Int32" />
+    <Property Name="MedicalRecord" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DoctorCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PatientCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PatientFamily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="dbVisitorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblCounty" EntityType="Self.tblCounty" />
+    <EntitySet Name="tblDoctor" EntityType="Self.tblDoctor" />
+    <EntitySet Name="tblDoctorPatient" EntityType="Self.tblDoctorPatient" />
+    <EntitySet Name="tblLicense" EntityType="Self.tblLicense" />
+    <EntitySet Name="tblPatient" EntityType="Self.tblPatient" />
+    <EntitySet Name="tblPostType" EntityType="Self.tblPostType" />
+    <EntitySet Name="tblProvince" EntityType="Self.tblProvince" />
+    <EntitySet Name="tblSecurityAccess" EntityType="Self.tblSecurityAccess" />
+    <EntitySet Name="tblSecurityQuestion" EntityType="Self.tblSecurityQuestion" />
+    <EntitySet Name="tblSpecialty" EntityType="Self.tblSpecialty" />
+    <EntitySet Name="tblSundry" EntityType="Self.tblSundry" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+    <EntitySet Name="tblVisitDoctor" EntityType="Self.tblVisitDoctor" />
+    <EntitySet Name="viewDoctor" EntityType="Self.viewDoctor" />
+    <EntitySet Name="viewDoctorPatient" EntityType="Self.viewDoctorPatient" />
+    <FunctionImport Name="spAutoDoctorId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="spAutoPatientId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="spSelectViewDoctor" ReturnType="Collection(dbVisitorModel.spSelectViewDoctor_Result)" />
+    <FunctionImport Name="spSelectViewDoctorPatient" ReturnType="Collection(dbVisitorModel.spSelectViewDoctorPatient_Result)" />
+  </EntityContainer>
+  <ComplexType Name="spSelectViewDoctor_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int16" Name="Specialty_Id" Nullable="true" />
+    <Property Type="Int16" Name="County_Id" Nullable="true" />
+    <Property Type="String" Name="Doctor_Id" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Family" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Sex" Nullable="true" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="SpecialtyName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CountyName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ProvinceName" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="Province_Id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spSelectViewDoctorPatient_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Doctor_Id" Nullable="true" />
+    <Property Type="Int32" Name="Patient_Id" Nullable="true" />
+    <Property Type="String" Name="MedicalRecord" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Date" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Time" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DoctorCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Family" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PatientCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="PatientName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PatientFamily" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

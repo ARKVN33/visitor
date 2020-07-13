@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbVisitorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblCounty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Province_Id" Type="smallint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDoctor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Specialty_Id" Type="smallint" />
+    <Property Name="County_Id" Type="smallint" />
+    <Property Name="Doctor_Id" Type="nvarchar" MaxLength="10" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Family" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="13" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="13" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblDoctorPatient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Doctor_Id" Type="int" />
+    <Property Name="Patient_Id" Type="int" />
+    <Property Name="MedicalRecord" Type="nvarchar" MaxLength="100" />
+    <Property Name="Date" Type="nvarchar" MaxLength="10" />
+    <Property Name="Time" Type="nvarchar" MaxLength="8" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblLicense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AppLicense" Type="nvarchar" MaxLength="40" />
+    <Property Name="AppVersion" Type="nvarchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="tblPatient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Patient_Id" Type="nvarchar" MaxLength="10" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Family" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="13" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="13" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblPostType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblProvince">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblSecurityAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Time" Type="nvarchar" MaxLength="19" />
+    <Property Name="Counter" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tblSecurityQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityQuestion" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tblSpecialty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSundry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RegisteredAdminPassword" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_PostType_Id" Type="tinyint" />
+    <Property Name="User_SecurityQuestion_Id" Type="tinyint" />
+    <Property Name="UserFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserPassword" Type="nvarchar" MaxLength="60" />
+    <Property Name="UserMobileNumber" Type="nvarchar" MaxLength="11" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserAnswer" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserRegistrationDate" Type="nvarchar" MaxLength="19" />
+    <Property Name="UserImage" Type="nvarchar(max)" />
+    <Property Name="UserDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tblVisitDoctor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Doctor_Id" Type="int" />
+    <Property Name="Date" Type="nvarchar" MaxLength="10" />
+    <Property Name="Time" Type="nvarchar" MaxLength="8" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbVisitor.dbo.viewDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewDoctor">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="SpecialtyName" />
+      <PropertyRef Name="CountyName" />
+      <PropertyRef Name="Province_Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Specialty_Id" Type="smallint" />
+    <Property Name="County_Id" Type="smallint" />
+    <Property Name="Doctor_Id" Type="nvarchar" MaxLength="10" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Family" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="13" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="13" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="SpecialtyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CountyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Province_Id" Type="smallint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbVisitor.dbo.viewDoctorPatient' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewDoctorPatient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Doctor_Id" Type="int" />
+    <Property Name="Patient_Id" Type="int" />
+    <Property Name="MedicalRecord" Type="nvarchar" MaxLength="100" />
+    <Property Name="Date" Type="nvarchar" MaxLength="10" />
+    <Property Name="Time" Type="nvarchar" MaxLength="8" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="DoctorCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Family" Type="nvarchar" MaxLength="50" />
+    <Property Name="PatientCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="PatientName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PatientFamily" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="spAutoDoctorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spAutoPatientId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spSelectViewDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spSelectViewDoctorPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="dbVisitorModelStoreContainer">
+    <EntitySet Name="tblCounty" EntityType="Self.tblCounty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDoctor" EntityType="Self.tblDoctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDoctorPatient" EntityType="Self.tblDoctorPatient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLicense" EntityType="Self.tblLicense" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPatient" EntityType="Self.tblPatient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPostType" EntityType="Self.tblPostType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProvince" EntityType="Self.tblProvince" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSecurityAccess" EntityType="Self.tblSecurityAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSecurityQuestion" EntityType="Self.tblSecurityQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSpecialty" EntityType="Self.tblSpecialty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSundry" EntityType="Self.tblSundry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVisitDoctor" EntityType="Self.tblVisitDoctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="viewDoctor" EntityType="Self.viewDoctor" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [viewDoctor].[Id] AS [Id], 
+    [viewDoctor].[Specialty_Id] AS [Specialty_Id], 
+    [viewDoctor].[County_Id] AS [County_Id], 
+    [viewDoctor].[Doctor_Id] AS [Doctor_Id], 
+    [viewDoctor].[Name] AS [Name], 
+    [viewDoctor].[Family] AS [Family], 
+    [viewDoctor].[Sex] AS [Sex], 
+    [viewDoctor].[Address] AS [Address], 
+    [viewDoctor].[PhoneNumber] AS [PhoneNumber], 
+    [viewDoctor].[MobileNumber] AS [MobileNumber], 
+    [viewDoctor].[Description] AS [Description], 
+    [viewDoctor].[SpecialtyName] AS [SpecialtyName], 
+    [viewDoctor].[CountyName] AS [CountyName], 
+    [viewDoctor].[ProvinceName] AS [ProvinceName], 
+    [viewDoctor].[Province_Id] AS [Province_Id]
+    FROM [dbo].[viewDoctor] AS [viewDoctor]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewDoctorPatient" EntityType="Self.viewDoctorPatient" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [viewDoctorPatient].[Id] AS [Id], 
+    [viewDoctorPatient].[Doctor_Id] AS [Doctor_Id], 
+    [viewDoctorPatient].[Patient_Id] AS [Patient_Id], 
+    [viewDoctorPatient].[MedicalRecord] AS [MedicalRecord], 
+    [viewDoctorPatient].[Date] AS [Date], 
+    [viewDoctorPatient].[Time] AS [Time], 
+    [viewDoctorPatient].[Description] AS [Description], 
+    [viewDoctorPatient].[DoctorCode] AS [DoctorCode], 
+    [viewDoctorPatient].[Name] AS [Name], 
+    [viewDoctorPatient].[Family] AS [Family], 
+    [viewDoctorPatient].[PatientCode] AS [PatientCode], 
+    [viewDoctorPatient].[PatientName] AS [PatientName], 
+    [viewDoctorPatient].[PatientFamily] AS [PatientFamily]
+    FROM [dbo].[viewDoctorPatient] AS [viewDoctorPatient]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
